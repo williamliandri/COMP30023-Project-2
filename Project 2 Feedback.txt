@@ -1,0 +1,78 @@
+Starting automated marking of wliandri
+Looking for project folder
+Found project directory ./comp30023-2018-project-2
+Commit Time: 2018-05-24T20:46:29+10:00, with Hash: 558a7fbf8f42b7ec12e1dfc5b6d97b1f8ee8fa2a
+Submission is before deadline
+
+Running make clean
+rm -f main.o file.o validate.o
+rm -f certcheck
+make clean found and run
+WARNING: Executable (./README.md) found in repository - deleting
+
+Running make
+gcc    -c -o main.o main.c
+gcc    -c -o file.o file.c
+gcc    -c -o validate.o validate.c
+gcc -o certcheck main.o file.o validate.o -lssl -lcrypto
+Executable created after make call
+
+Looking for executable
+Found certcheck exe
+About to run certcheck (./certcheck)
+++++++++++++++++++++++++
++start certcheck output+
+++++++++++++++++++++++++
+++++++++++++++++++++++++
++ end certcheck output +
+++++++++++++++++++++++++
+Finished running certcheck (./testinput.csv), exited normally
+output.csv found
+Test testone.crt,www.example.com:PASS
+Test testtwo.crt,www.mydomain.com:PASS
+Test testthree.crt,www.test.com:PASS
+Test testfour.crt,www.oldsite.com:PASS
+Test testfive.crt,www.unimelb.com:PASS
+Test testsix.crt,www.codetest.com:PASS
+Test testseven.crt,www.example.com:PASS
+Test testeight.crt,www.comp30023.com:PASS
+Test testnine.crt,www.certtest.com:PASS
+Test testten.crt,www.victoria.com:PASS
+Test testeleven.crt,freeca.com:PASS
+Test testtwo.crt,www.example.com:PASS
+Test testseven.crt,example.com:PASS
+Test testnine.crt,new.www.certtest.com:CertCheck:1,Correct:0:FAIL
+Test testnine.crt,new.certtest.com:PASS
+Test testnine.crt,mail.CERTTEST.com:CertCheck:0,Correct:1:FAIL
+Test testnine.crt,webmail.comp30023.com:PASS
+Test testnine.crt,webmail.comp30023.community:PASS
+
+
+Start Feedback Comments
+=======================
+
+* Meant to match hostnames case insensitively
+* Meant to match *.certtest.com with e.g. www.certtest.com but not subdomains,
+can't use fnmatch() for this because "*" will match an arbitrary amount of text
+* After setting result = INVALID why bother with further checks, want early out
+* For enhanced key usage is it really necessary to use strstr() followed by
+strcasecmp()? use one or the other, or design your own comparison routine
+* Otherwise really nice code, correctly modularized and sensible structure
+
+Additional Comments and Marks
+*****************************
+
+Part A - Git Usage: 1 out of 1
+Part A - Makefile: 1 out of 1
+Part A - Code Clarity: 1 out of 2
+Part A - Correct Interface: 1 out of 1
+Part B - Read/Write CSV: 1 out of 1
+Part B - NotBefore Check: 1 out of 1
+Part B - NotAfter Check: 1 out of 1
+Part B - CommonName Check: 2 out of 2
+Part C - KeyLength Check: 1 out of 1
+Part C - KeyUsage Check: 2 out of 2
+Part C - SAN Check: 1 out of 2
+
+=======================
+End Feedback Comments

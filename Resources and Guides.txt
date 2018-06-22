@@ -1,0 +1,55 @@
+Run certexample.c by including openssl and to solve certexample.c:5:10: fatal error: 'openssl/x509.h' file not found (ON MAC)
+
+Install open SSL from homebrew: brew install openssl
+https://superuser.com/questions/1089390/how-to-install-libssl-dev-libffi-dev-on-mac-os
+
+Run the program by including the directory of the openssl
+https://stackoverflow.com/questions/3368683/how-to-compile-c-file-with-openssl-includes
+gcc -I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib  -o certexample certexample.c -lssl -lcrypto
+
+
+
+
+COMPILE:
+gcc -I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib -o certcheck certcheck.c -lssl -lcrypto
+
+gcc -I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib -o certcheck certcheck.c validate.c -lssl -lcrypto
+
+RUN:
+./certcheck sample_certs/sample_input.csv
+
+Open Certificate
+openssl x509 -noout -text -in ~/Documents/"Semester 5"/"Computer System"/"Project 2"/sample_certs/testone.crt
+
+
+RESOURCES
+- Convert ASN1_TIME to time_t
+https://stackoverflow.com/questions/10975542/asn1-time-to-time-t-conversion
+
+- Subject name with domain name
+https://github.com/iSECPartners/ssl-conservatory/blob/master/openssl/openssl_hostname_validation.c
+
+- minimum RSA key length 
+https://stackoverflow.com/questions/8835597/how-to-verify-key-length-of-a-pem-certificate-using-openssl-functions
+
+- Key Usage and Constraints
+http://fm4dd.com/openssl/certextensions.htm
+
+- Programmly extract info from certificate
+https://stackoverflow.com/questions/15787824/how-to-programmatically-extract-information-from-certificate
+
+- Certificate Extensions
+http://fm4dd.com/openssl/certextensions.htm'
+
+- Uses FN match to check domain name with common name
+http://www.delorie.com/djgpp/doc/libc/libc_334.html
+
+- Example checking hostname, subject alternative name
+https://wiki.openssl.org/index.php/Hostname_validation
+
+- Find longest common string
+https://stackoverflow.com/questions/37235367/finding-the-longest-common-word-in-two-strings-in-c-language
+
+
+
+

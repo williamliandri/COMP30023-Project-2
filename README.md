@@ -1,4 +1,4 @@
-# COMP30023 Project 2
+# COMP30023 - Computer System Project 2
 # by William Liandri
 
 ## List of files:
